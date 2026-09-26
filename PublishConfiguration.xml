@@ -1,0 +1,35 @@
+<PublishConfiguration>
+  <ModId Value="160391" />
+  <DisplayName Value="Pinned Finance Tooltip" />
+  <ShortDescription Value="Pin the money tooltip above the toolbar - keep your finance trend always visible with a single click." />
+  <LongDescription>
+The vanilla money tooltip only shows while you hover the money balance. This mod adds a small trend button next to it that keeps the tooltip pinned above the bottom toolbar.
+
+**Features**
+
+- Toggle button right next to the money balance in the bottom toolbar
+- Pinned panel shows the current money trend (income/loss per hour), just like the vanilla hover tooltip
+- Detailed monthly income and expense breakdown by category, with category color legends
+- All labels follow your game language
+- Collapses automatically when you press ESC (pause menu), load a savegame or start a new game
+- Pure UI mod: no savegame data is touched, safe to add or remove at any time
+
+Made for game version 1.6.2f1.
+
+---
+
+在底部工具栏的资金数字旁新增一个趋势按钮。点击后，资金提示（当前走势）与收入/支出分类明细将常驻显示在资金栏上方，再次点击即可收起。
+
+- 收支分类明细与原版经济面板预算页同源，带分类色块
+- 全部文案跟随游戏语言
+- 按 ESC 打开菜单、读取存档、开始新游戏时自动收起
+- 纯界面模组，不写入任何存档数据，可随时安全启用/禁用
+  </LongDescription>
+  <ModVersion Value="1.0.0" />
+  <GameVersion Value="1.6.2f1" />
+  <Tag Value="Code Mod" />
+  <Thumbnail Value="publish\Thumbnail.jpg" />
+  <Screenshot Value="publish\Screenshot1.png" />
+  <Screenshot Value="publish\Screenshot2.png" />
+  <Screenshot Value="publish\Screenshot3.jpg" />
+</PublishConfiguration>

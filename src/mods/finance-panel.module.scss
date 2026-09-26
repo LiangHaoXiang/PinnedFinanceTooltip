@@ -1,0 +1,85 @@
+.panel {
+    position: fixed;
+    z-index: 9999;
+    min-width: 360rem;
+    max-width: 460rem;
+    padding: 16rem 20rem;
+    background-color: var(--tooltipColor);
+    filter: var(--tooltipFilter);
+    border-radius: 4rem;
+    font-size: var(--fontSizeS);
+    color: var(--textColorDim);
+    pointer-events: none;
+}
+
+.headerTitle {
+    color: var(--accentColorDark);
+    font-size: var(--fontSizeM);
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.headerDescription {
+    margin-top: 4rem;
+    font-size: var(--fontSizeS);
+    line-height: 1.2;
+}
+
+.trendRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12rem 0;
+    padding: 8rem 12rem;
+    border-radius: 3rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--textColor);
+}
+
+.positive {
+    color: var(--positiveColor);
+}
+
+.negative {
+    color: var(--negativeColor);
+}
+
+.section {
+    margin-top: 10rem;
+}
+
+.sectionHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4rem;
+    font-weight: bold;
+    color: var(--textColor);
+}
+
+.itemRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0 3rem 6rem;
+}
+
+.itemName {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 24rem;
+}
+
+.itemLegend {
+    width: 10rem;
+    height: 10rem;
+    margin-right: 8rem;
+    border-radius: 2rem;
+}
+
+.itemValue {
+    color: var(--textColor);
+}
