@@ -116,12 +116,19 @@ export function registerPinnedFinanceTooltip(registry: ModuleRegistry): void {
 
     // NOTE: extending the money field itself is not possible in this game build - its
     // module export compiles to a const binding, so the module registry override setter
-    // throws. The bottom toolbar export is a var binding, so it can be wrapped safely.
-    registry.extend(
-        "game-ui/game/components/toolbar/toolbar.tsx",
-        "Toolbar",
-        extendToolbar,
-    );
+    // throws. Both toolbar variants export var bindings, so they can be wrapped safely;
+    // the game renders either the new toolbar or the legacy one, never both at once.
+    const extendTargets: Array<[string, string]> = [
+        ["game-ui/game/components/toolbar/toolbar.tsx", "Toolbar"],
+        ["game-ui/game/components/toolbar/toolbar-legacy.tsx", "ToolbarLegacy"],
+    ];
+    for (const [modulePath, exportName] of extendTargets) {
+        try {
+            registry.extend(modulePath, exportName, extendToolbar);
+        } catch (e) {
+            console.error(`[PinnedFinanceTooltip] extend ${exportName} failed:`, e);
+        }
+    }
 }
 
 const extendToolbar: ModuleRegistryExtend = (Toolbar: ComponentType<any>) => {
