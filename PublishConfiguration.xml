@@ -28,8 +28,8 @@ Made for game version 1.6.2f1.
   <ModVersion Value="1.0.0" />
   <GameVersion Value="1.6.2f1" />
   <Tag Value="Code Mod" />
-  <Thumbnail Value="publish\Thumbnail.jpg" />
-  <Screenshot Value="publish\Screenshot1.png" />
-  <Screenshot Value="publish\Screenshot2.png" />
-  <Screenshot Value="publish\Screenshot3.jpg" />
+  <Thumbnail Value="publish\Thumbnail.png" />
+  <Screenshot Value="publish\tips_english.png" />
+  <Screenshot Value="publish\tips_chinese.png" />
+  <Screenshot Value="publish\screen_preview.jpg" />
 </PublishConfiguration>
