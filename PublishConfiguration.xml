@@ -25,7 +25,12 @@ Made for game version 1.6.2f1.
 - 按 ESC 打开菜单、读取存档、开始新游戏时自动收起
 - 纯界面模组，不写入任何存档数据，可随时安全启用/禁用
   </LongDescription>
-  <ModVersion Value="1.0.0" />
+  <ModVersion Value="1.0.1" />
+  <ChangeLog>
+Added support for the Legacy UI and the Console (gamepad) UI. The pin button now appears next to the money balance in all three toolbar styles (new, legacy and console).
+
+新增经典版 UI 与手柄风格 UI（Console UI）支持：趋势按钮在新版、经典版、手柄版三套工具栏下均可正常显示，面板功能不变。
+  </ChangeLog>
   <GameVersion Value="1.6.2f1" />
   <Tag Value="Code Mod" />
   <Thumbnail Value="publish\Thumbnail.png" />
