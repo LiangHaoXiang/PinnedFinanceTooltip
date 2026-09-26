@@ -37,4 +37,5 @@ Added support for the Legacy UI and the Console (gamepad) UI. The pin button now
   <Screenshot Value="publish\tips_english.png" />
   <Screenshot Value="publish\tips_chinese.png" />
   <Screenshot Value="publish\screen_preview.jpg" />
+  <Screenshot Value="publish\tips_legacy_ui.png" />
 </PublishConfiguration>
