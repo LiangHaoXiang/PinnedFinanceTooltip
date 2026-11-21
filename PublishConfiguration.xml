@@ -18,23 +18,21 @@ Made for game version 1.6.2f1.
 
 ---
 
-鍦ㄥ簳閮ㄥ伐鍏锋爮鐨勮祫閲戞暟瀛楁梺鏂板涓€涓秼鍔挎寜閽€傜偣鍑诲悗锛岃祫閲戞彁绀猴紙褰撳墠璧板娍锛変笌鏀跺叆/鏀嚭鍒嗙被鏄庣粏灏嗗父椹绘樉绀哄湪璧勯噾鏍忎笂鏂癸紝鍐嶆鐐瑰嚮鍗冲彲鏀惰捣銆?
+閸︺劌绨抽柈銊ヤ紣閸忛攱鐖惃鍕カ闁叉垶鏆熺€涙姊洪弬鏉款杻娑撯偓娑擃亣绉奸崝鎸庡瘻闁筋喓鈧倻鍋ｉ崙璇叉倵閿涘矁绁柌鎴炲絹缁€鐚寸礄瑜版挸澧犵挧鏉垮◢閿涘绗岄弨璺哄弳/閺€顖氬毉閸掑棛琚弰搴ｇ矎鐏忓棗鐖舵す缁樻▔缁€鍝勬躬鐠у嫰鍣鹃弽蹇庣瑐閺傜櫢绱濋崘宥嗩偧閻愮懓鍤崡鍐插讲閺€鎯版崳閵?
 
-- 鏀舵敮鍒嗙被鏄庣粏涓庡師鐗堢粡娴庨潰鏉块绠楅〉鍚屾簮锛屽甫鍒嗙被鑹插潡
-- 鍏ㄩ儴鏂囨璺熼殢娓告垙璇█
-- 鎸?ESC 鎵撳紑鑿滃崟銆佽鍙栧瓨妗ｃ€佸紑濮嬫柊娓告垙鏃惰嚜鍔ㄦ敹璧?
-- 绾晫闈㈡ā缁勶紝涓嶅啓鍏ヤ换浣曞瓨妗ｆ暟鎹紝鍙殢鏃跺畨鍏ㄥ惎鐢?绂佺敤
+- 閺€鑸垫暜閸掑棛琚弰搴ｇ矎娑撳骸甯悧鍫㈢病濞村酣娼伴弶鍧楊暕缁犳銆夐崥灞剧爱閿涘苯鐢崚鍡欒閼规彃娼?
+- 閸忋劑鍎撮弬鍥攳鐠虹喖娈㈠〒鍛婂灆鐠囶叀鈻?
+- 閹?ESC 閹垫挸绱戦懣婊冨礋閵嗕浇顕伴崣鏍х摠濡楋絻鈧礁绱戞慨瀣煀濞撳憡鍨欓弮鎯板殰閸斻劍鏁圭挧?
+- 缁绢垳鏅棃銏∧佺紒鍕剁礉娑撳秴鍟撻崗銉ゆ崲娴ｆ洖鐡ㄥ锝嗘殶閹诡噯绱濋崣顖炴閺冭泛鐣ㄩ崗銊ユ儙閻?缁備胶鏁?
   </LongDescription>
-  <ModVersion Value="1.0.2" />
+  <ModVersion Value="1.0.3" />
   <ChangeLog>
-Performance &amp; reliability update.
+Maintenance release with no visible changes.
 
-- The pinned panel now refreshes at most ~7 times per second instead of repainting on every budget update.
-- The panel hides together with the rest of the UI (photo mode / hide UI) and comes back by itself.
-- Budget categories that do not fit above the toolbar are summarised as &quot;+N&quot; instead of being cut off.
-- More resilient when a game update moves the internal economy screens.
+- The pinned panel now only repaints when a value it actually displays changes, even when the game re-sends the same budget categories, which keeps the UI lighter in large cities.
+- Internal cleanup: removed dead code paths, stale build scripts and a misleading publish warning.
 
-性能与稳定性更新：面板改为每 150 毫秒最多刷新一次；隐藏 UI / 照片模式时随界面隐藏并自动恢复；超出可用高度的收支分类折叠为「+N」；对游戏内部接口变动更健壮。
+维护性更新，界面无可见变化。面板只在真正显示的值变化时重绘（即使游戏重复下发相同的预算分类），大城市下进一步减轻界面负担；内部清理：移除无用代码路径、失效的构建脚本与一条会误报的发布提示。
   </ChangeLog>
   <GameVersion Value="1.6.2f1" />
   <Tag Value="Code Mod" />
