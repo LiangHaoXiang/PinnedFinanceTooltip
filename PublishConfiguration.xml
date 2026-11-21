@@ -18,18 +18,23 @@ Made for game version 1.6.2f1.
 
 ---
 
-在底部工具栏的资金数字旁新增一个趋势按钮。点击后，资金提示（当前走势）与收入/支出分类明细将常驻显示在资金栏上方，再次点击即可收起。
+鍦ㄥ簳閮ㄥ伐鍏锋爮鐨勮祫閲戞暟瀛楁梺鏂板涓€涓秼鍔挎寜閽€傜偣鍑诲悗锛岃祫閲戞彁绀猴紙褰撳墠璧板娍锛変笌鏀跺叆/鏀嚭鍒嗙被鏄庣粏灏嗗父椹绘樉绀哄湪璧勯噾鏍忎笂鏂癸紝鍐嶆鐐瑰嚮鍗冲彲鏀惰捣銆?
 
-- 收支分类明细与原版经济面板预算页同源，带分类色块
-- 全部文案跟随游戏语言
-- 按 ESC 打开菜单、读取存档、开始新游戏时自动收起
-- 纯界面模组，不写入任何存档数据，可随时安全启用/禁用
+- 鏀舵敮鍒嗙被鏄庣粏涓庡師鐗堢粡娴庨潰鏉块绠楅〉鍚屾簮锛屽甫鍒嗙被鑹插潡
+- 鍏ㄩ儴鏂囨璺熼殢娓告垙璇█
+- 鎸?ESC 鎵撳紑鑿滃崟銆佽鍙栧瓨妗ｃ€佸紑濮嬫柊娓告垙鏃惰嚜鍔ㄦ敹璧?
+- 绾晫闈㈡ā缁勶紝涓嶅啓鍏ヤ换浣曞瓨妗ｆ暟鎹紝鍙殢鏃跺畨鍏ㄥ惎鐢?绂佺敤
   </LongDescription>
-  <ModVersion Value="1.0.1" />
+  <ModVersion Value="1.0.2" />
   <ChangeLog>
-Added support for the Legacy UI and the Console (gamepad) UI. The pin button now appears next to the money balance in all three toolbar styles (new, legacy and console).
+Performance &amp; reliability update.
 
-新增经典版 UI 与手柄风格 UI（Console UI）支持：趋势按钮在新版、经典版、手柄版三套工具栏下均可正常显示，面板功能不变。
+- The pinned panel now refreshes at most ~7 times per second instead of repainting on every budget update.
+- The panel hides together with the rest of the UI (photo mode / hide UI) and comes back by itself.
+- Budget categories that do not fit above the toolbar are summarised as &quot;+N&quot; instead of being cut off.
+- More resilient when a game update moves the internal economy screens.
+
+性能与稳定性更新：面板改为每 150 毫秒最多刷新一次；隐藏 UI / 照片模式时随界面隐藏并自动恢复；超出可用高度的收支分类折叠为「+N」；对游戏内部接口变动更健壮。
   </ChangeLog>
   <GameVersion Value="1.6.2f1" />
   <Tag Value="Code Mod" />
