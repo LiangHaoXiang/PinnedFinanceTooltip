@@ -3,9 +3,16 @@
     z-index: 9999;
     min-width: 360rem;
     max-width: 460rem;
+    // Safety net only: the row budget keeps the panel inside the screen, this
+    // stops a bad measurement from pushing content off the top edge.
+    max-height: calc(100vh - 40rem);
+    overflow: hidden;
     padding: 16rem 20rem;
     background-color: var(--tooltipColor);
-    filter: var(--tooltipFilter);
+    // No `filter: var(--tooltipFilter)` here: a filter pass on the whole panel
+    // buys one pixel of drop shadow and costs compositing frames (same tradeoff
+    // as the SSP panel, which dropped its blur entirely).
+    border: 1rem solid rgba(255, 255, 255, 0.06);
     border-radius: 4rem;
     font-size: var(--fontSizeS);
     color: var(--textColorDim);
@@ -82,4 +89,13 @@
 
 .itemValue {
     color: var(--textColor);
+}
+
+// Rows that did not fit the available height; the panel cannot scroll, so they
+// are counted instead of being clipped invisibly.
+.sectionFooter {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+    color: var(--textColorDimmest);
 }

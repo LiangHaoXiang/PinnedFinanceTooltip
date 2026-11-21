@@ -7,6 +7,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack --watch",
+    "test": "node tests/finance-store.test.cjs",
     "update": "npx create-csii-ui-mod update",
     "clean": "npx create-csii-ui-mod clean"
   },
@@ -15,7 +16,6 @@
     "build"
   ],
   "dependencies": {
-    "classnames": "2.3.2",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -26,8 +26,6 @@
     "mini-css-extract-plugin": "2.7.0",
     "sass": "^1.69.5",
     "sass-loader": "13.2.0",
-    "style-loader": "^3.3.3",
-    "swc-loader": "0.2.3",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
