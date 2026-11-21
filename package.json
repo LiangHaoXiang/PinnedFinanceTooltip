@@ -7,9 +7,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack --watch",
-    "test": "node tests/finance-store.test.cjs",
-    "update": "npx create-csii-ui-mod update",
-    "clean": "npx create-csii-ui-mod clean"
+    "test": "node tests/finance-store.test.cjs"
   },
   "exclude": [
     "node_modules",

@@ -251,6 +251,33 @@ assert.equal(degenerate.income.shown + degenerate.expense.shown, 1, "a single ro
     quiet.stop();
 }
 
+// --- store: re-serialized but identical categories do not repaint ---------
+{
+    const category = (active, r) => ({ id: "Taxes", active, color: { r, g: 0.8, b: 0.3, a: 1 } });
+    const host = { incomeItems: fakeBinding([category(true, 0.2)]), incomeValues: fakeBinding([100]) };
+    const quiet = createFinanceStore(host);
+    let painted = 0;
+    quiet.subscribe(() => {
+        painted += 1;
+    });
+    quiet.start();
+
+    // The host re-serializes the list on every push: new objects, same content.
+    host.incomeItems.push([category(true, 0.2)]);
+    host.incomeValues.push([100]);
+    tick(FLUSH_MS * 2);
+    assert.equal(painted, 0, "identical content re-serialized by the host must not repaint");
+
+    host.incomeItems.push([category(false, 0.2)]);
+    tick(FLUSH_MS);
+    assert.equal(painted, 1, "a category changing state repaints");
+
+    host.incomeItems.push([category(false, 0.9)]);
+    tick(FLUSH_MS);
+    assert.equal(painted, 2, "a legend colour change repaints");
+    quiet.stop();
+}
+
 // --- layout: horizontal clamp ---------------------------------------------
 assert.equal(clampPanelLeft(100, 1280, 1), 100, "an anchor that fits is used as-is");
 assert.equal(

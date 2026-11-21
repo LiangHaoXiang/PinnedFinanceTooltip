@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { LocalizedNumber$1 as LocalizedNumber } from "cs2/l10n";
 
-export const formatNumber = (value: number) => Math.round(Math.abs(value)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+const formatNumber = (value: number) => Math.round(Math.abs(value)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 /** Used only when the host localization component is unavailable. */
 export const FallbackNumber: FC<{ value: number; unit?: unknown; signed?: boolean }> = ({ value, unit, signed }) => {

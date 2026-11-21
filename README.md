@@ -114,6 +114,7 @@ types/                                  # 官方 cs2/* 包类型定义（游戏�
 - Gameface 中 Portal 到 body 的 fixed 元素可见但**不响应点击**；`<img>` 引用 SVG 时 currentColor 不继承（显黑色），须内联 SVG
 - budget 数据在 `cs2/bindings` 的 `economyBudget` 命名空间（`budget` 命名空间只有类型），且**不能模块顶层解构**：改名为惰性读取，缺导出只降级不崩
 - 面板订阅走 `finance-store` 的 150ms 收集窗口：同一 simulation tick 里 8 个绑定各回调一次也只重绘一次
+- 重绘判定比的是「实际画出来的内容」：money 取整后比较、分类数组按 `id`/`active`/颜色分量结构比较——宿主每次 push 都会重建对象，直接比引用会退化成每 tick 都重绘
 - 面板随工具栏隐藏：照片模式 / 隐藏 UI 时根节点带 `hide-ui`，而 body 直挂的 Portal 逃逸了原版的 `.hide-ui .app-container>*{opacity:0}`，因此自己用「锚点矩形 + hide-ui 类」判定，命中后**只暂时不渲染**（`expanded` 保留），退出后自动回来
 - 行数超出可用高度时截断并显示 `+N`（`pointer-events: none` 的面板无法滚动）；`rem` 不是 html font-size，用 probe 元素量换算
 - 面板崩溃由 ErrorBoundary 兜底（按钮在边界外，永不消失）；运行时导出全部有本地 fallback

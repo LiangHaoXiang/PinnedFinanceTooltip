@@ -54,6 +54,24 @@ function readBinding<T>(binding: ValueBinding<T> | undefined, fallback: T): T {
 }
 
 /**
+ * Budget categories are plain data. The host re-serializes the list whenever it
+ * pushes the bindings, so comparing object identity would report a change on
+ * every tick even when nothing the panel draws has moved.
+ */
+function sameBudgetItem(previous: unknown, next: unknown): boolean {
+    if (previous === next) return true;
+    if (typeof previous !== "object" || typeof next !== "object" || !previous || !next) return false;
+    const a = previous as { id?: unknown; active?: unknown; color?: { r?: unknown; g?: unknown; b?: unknown; a?: unknown } };
+    const b = next as { id?: unknown; active?: unknown; color?: { r?: unknown; g?: unknown; b?: unknown; a?: unknown } };
+    if (a.id !== b.id || a.active !== b.active) return false;
+    const colorA = a.color;
+    const colorB = b.color;
+    if (colorA === colorB) return true;
+    if (!colorA || !colorB) return false;
+    return colorA.r === colorB.r && colorA.g === colorB.g && colorA.b === colorB.b && (colorA.a ?? 1) === (colorB.a ?? 1);
+}
+
+/**
  * The panel renders money in whole units, so a binding that drifts by a fraction
  * of a unit cannot change a single visible character. Comparing what would be
  * drawn - rather than the raw float - keeps a busy city from repainting the
@@ -66,7 +84,11 @@ function sameDisplayValue(previous: unknown, next: unknown): boolean {
     if (Array.isArray(previous) && Array.isArray(next)) {
         if (previous.length !== next.length) return false;
         for (let index = 0; index < previous.length; index += 1) {
-            if (!sameDisplayValue(previous[index], next[index])) return false;
+            const a = previous[index];
+            const b = next[index];
+            if (a === b) continue;
+            const same = typeof a === "object" && typeof b === "object" ? sameBudgetItem(a, b) : sameDisplayValue(a, b);
+            if (!same) return false;
         }
         return true;
     }

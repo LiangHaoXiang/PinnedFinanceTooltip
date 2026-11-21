@@ -9,14 +9,13 @@ export interface AnchorState {
 }
 
 /**
- * Tracks the money field while `active` is true. The anchor is only followed
- * while the panel is open, so a collapsed panel costs nothing.
+ * Tracks the money field for as long as the caller is mounted. The panel only
+ * mounts while expanded, so a collapsed panel costs nothing.
  */
-export function useAnchorState(active: boolean): AnchorState {
+export function useAnchorState(): AnchorState {
     const [state, setState] = useState<AnchorState>(() => ({ anchor: getAnchor(), visible: getAnchorVisible() }));
 
     useEffect(() => {
-        if (!active) return;
         const sync = () => setState({ anchor: getAnchor(), visible: getAnchorVisible() });
         const unsubscribe = subscribeAnchor(sync);
         followAnchor();
@@ -25,7 +24,7 @@ export function useAnchorState(active: boolean): AnchorState {
             unsubscribe();
             unfollowAnchor();
         };
-    }, [active]);
+    }, []);
 
     return state;
 }

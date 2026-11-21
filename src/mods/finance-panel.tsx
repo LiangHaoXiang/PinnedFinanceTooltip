@@ -109,7 +109,7 @@ const CurrentTrend: FC<{ moneyDelta: number; unlimitedMoney: boolean }> = ({ mon
 export const FinancePanel: FC = () => {
     const store = getFinanceStore();
     const snapshot = useFinanceSnapshot(store);
-    const { anchor, visible } = useAnchorState(true);
+    const { anchor, visible } = useAnchorState();
 
     const incomeItems = useMemo(() => snapshot.incomeItems.filter(item => item.active), [snapshot.incomeItems]);
     const expenseItems = useMemo(() => snapshot.expenseItems.filter(item => item.active), [snapshot.expenseItems]);

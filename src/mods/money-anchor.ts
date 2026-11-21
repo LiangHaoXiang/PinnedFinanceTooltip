@@ -7,7 +7,7 @@
  * rem-per-pixel probe and the "is the toolbar currently hidden" check.
  */
 
-export const MONEY_ICON_SELECTOR = 'img[src*="Money.svg"]';
+const MONEY_ICON_SELECTOR = 'img[src*="Money.svg"]';
 
 /** New UI, legacy UI and the console toolbar all render this money field class. */
 const PRIMARY_FIELD_SELECTOR = '[class*="money-field_"]';
@@ -16,7 +16,7 @@ const PRIMARY_FIELD_SELECTOR = '[class*="money-field_"]';
 const FALLBACK_FIELD_SELECTOR = '[class*="field_"]';
 
 /** How often the panel re-reads the anchor while it is open. */
-export const FOLLOW_MS = 250;
+const FOLLOW_MS = 250;
 
 export interface MoneyAnchor {
     left: number;

@@ -149,14 +149,24 @@ $env:DOTNET_ROLL_FORWARD = "Major"
 $output = & $publisher @publishArgs 2>&1
 $output | ForEach-Object { Write-Host $_ }
 if ($LASTEXITCODE -ne 0) {
+    Write-Warning "版本号与 ChangeLog 已写入本地文件；确认这次没发成功后，可用 git checkout -- mod.json PublishConfiguration.xml 回滚。"
     throw "ModPublisher 失败（退出码 $LASTEXITCODE）。"
 }
 
-$published = ($output | Select-String -Pattern "Mod published with Id=(\d+)" -AllMatches)
-if ($published) {
-    Write-Host "发布成功：$($published.Matches[0].Value)" -ForegroundColor Green
+# 首发 Publish 会回 'Mod published with Id=<数字>'；NewVersion 只回
+# 'New mod version published ... finished successfully'，两者判定不同。
+$text = ($output -join "`n")
+if ($Command -eq "Publish") {
+    $match = [regex]::Match($text, "Mod published with Id=(\d+)")
+    if ($match.Success) {
+        Write-Host "发布成功：$($match.Value)" -ForegroundColor Green
+    } else {
+        Write-Warning "首发没有返回 ModId，请到 PDX 页面确认后再回填 <ModId>。"
+    }
+} elseif ($text -match "(?i)published") {
+    Write-Host "新版本已发布（发布器输出 'New mod version published'）。" -ForegroundColor Green
 } else {
-    Write-Warning "发布器没有输出 'Mod published with Id='，请到 PDX 页面确认。"
+    Write-Warning "发布器没有输出 published，请到 PDX 页面确认。"
 }
 
 $modId = [regex]::Match($config, '<ModId Value="(\d+)"').Groups[1].Value
