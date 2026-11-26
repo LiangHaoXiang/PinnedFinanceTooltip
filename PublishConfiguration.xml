@@ -34,7 +34,7 @@ Maintenance release with no visible changes.
 
 维护性更新，界面无可见变化。面板只在真正显示的值变化时重绘（即使游戏重复下发相同的预算分类），大城市下进一步减轻界面负担；内部清理：移除无用代码路径、失效的构建脚本与一条会误报的发布提示。
   </ChangeLog>
-  <GameVersion Value="1.6.2f1" />
+  <GameVersion Value="1.6.*" />
   <Tag Value="Code Mod" />
   <Thumbnail Value="publish\Thumbnail.png" />
   <Screenshot Value="publish\tips_english.png" />

@@ -4,7 +4,7 @@
 
 - **Paradox Mods 页面**：<https://mods.paradoxplaza.com/mods/160391/Windows>
 - **ModID**：160391（发新版本时需要，已回填在 PublishConfiguration.xml）
-- **适配游戏版本**：1.6.2f1
+- **适配游戏版本**：1.6.*（发布配置用通配符，游戏小版本更新不失效；构建/验证基于 1.6.2f1）
 - 纯 UI 模组（TypeScript + React，Coherent Gameface），不写入任何存档数据
 
 ## 功能
