@@ -65,8 +65,11 @@ if (-not (Test-Path $publisher)) { throw "找不到 ModPublisher.exe：$publishe
 $deployDir = Join-Path $userData "Mods\PinnedFinanceTooltip"
 
 # --- 3. 当前版本 ------------------------------------------------------------
-$modJson = Get-Content -Path $modJsonPath -Raw
-$config = Get-Content -Path $configPath -Raw
+# 不要用 Get-Content -Raw：Windows PowerShell 5.1 对无 BOM 的 UTF-8 文件按系统
+# ANSI（GBK）解码，中文会变乱码并在写回时永久烧进文件（v1.0.2 页面描述乱码根因）。
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+$modJson = [System.IO.File]::ReadAllText($modJsonPath, $utf8)
+$config = [System.IO.File]::ReadAllText($configPath, $utf8)
 
 $modVersion = [regex]::Match($modJson, '"version"\s*:\s*"([0-9.]+)"').Groups[1].Value
 $configVersion = [regex]::Match($config, '<ModVersion Value="([0-9.]+)"').Groups[1].Value
