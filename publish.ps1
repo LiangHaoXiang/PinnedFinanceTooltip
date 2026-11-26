@@ -153,8 +153,10 @@ if ($LASTEXITCODE -ne 0) {
     throw "ModPublisher 失败（退出码 $LASTEXITCODE）。"
 }
 
-# 首发 Publish 会回 'Mod published with Id=<数字>'；NewVersion 只回
-# 'New mod version published ... finished successfully'，两者判定不同。
+# 三种命令的成功输出各不相同：
+#   Publish    -> "Mod published with Id=<数字>"
+#   NewVersion -> "New mod version published" + "... finished successfully"
+#   Update     -> "Mod metadata updating process finished successfully"（不含 published）
 $text = ($output -join "`n")
 if ($Command -eq "Publish") {
     $match = [regex]::Match($text, "Mod published with Id=(\d+)")
@@ -162,6 +164,12 @@ if ($Command -eq "Publish") {
         Write-Host "发布成功：$($match.Value)" -ForegroundColor Green
     } else {
         Write-Warning "首发没有返回 ModId，请到 PDX 页面确认后再回填 <ModId>。"
+    }
+} elseif ($Command -eq "Update") {
+    if ($text -match "(?i)metadata updating process finished successfully") {
+        Write-Host "页面元数据已更新（版本号不变）。" -ForegroundColor Green
+    } else {
+        Write-Warning "发布器没有输出更新成功的标志，请到 PDX 页面确认。"
     }
 } elseif ($text -match "(?i)published") {
     Write-Host "新版本已发布（发布器输出 'New mod version published'）。" -ForegroundColor Green
